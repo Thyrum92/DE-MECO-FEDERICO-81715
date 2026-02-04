@@ -1,37 +1,55 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import NavBarra from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import CartWidget from './CartWidget';
-import '../styles/Navbar.css';
+import CartWidget from "./CartWidget";
 
-function Navbar() {
+export default function Navbar() {
   return (
-    <NavBarra expand="lg" className='navbar-custom'>
-      <Container>
-        <NavBarra.Brand href="/">TiendApp</NavBarra.Brand>
+    <div className="navbar bg-base-100 shadow-sm">
+      <div className="navbar-start">
+        {/* Mobile dropdown: oculto en desktop */}
+        <div className="dropdown lg:hidden">
+          <div tabIndex={0} role="button" className="btn btn-ghost">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h8m-8 6h16"
+              />
+            </svg>
+          </div>
 
-        <NavBarra.Toggle aria-controls="basic-navbar-nav" />
-        <NavBarra.Collapse id="basic-navbar-nav">
+          <ul
+            tabIndex={0}
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow"
+          >
+            <li><a>Monitores</a></li>
+            <li><a>Teclados</a></li>
+            <li><a>Mouse</a></li>
+          </ul>
+        </div>
 
-          <Nav className="me-auto">
-            <NavDropdown title="Categorias" id="basic-nav-dropdown">
-              <NavDropdown.Item href="monitores">Monitores</NavDropdown.Item>
-              <NavDropdown.Item href="teclados">Teclados</NavDropdown.Item>
-              <NavDropdown.Item href="mouse">Mouse</NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
+        <a className="btn btn-ghost text-xl" href="/">
+          TiendApp
+        </a>
+      </div>
 
-          <Nav className="ms-auto">
-            <Nav.Link href="#carrito" className="position-relative">
-                <CartWidget />
-            </Nav.Link>
-          </Nav>
+      {/* Desktop menu: oculto en mobile */}
+      <div className="navbar-center hidden lg:flex">
+        <ul className="menu menu-horizontal px-1">
+          <li><a>Monitores</a></li>
+          <li><a>Teclados</a></li>
+          <li><a>Mouse</a></li>
+        </ul>
+      </div>
 
-        </NavBarra.Collapse>
-      </Container>
-    </NavBarra>
+      <div className="navbar-end">
+        <CartWidget />
+      </div>
+    </div>
   );
 }
-
-export default Navbar;
