@@ -1,3 +1,4 @@
+import { Link } from "react-router"
 
 function ItemList({ items }){
 
@@ -24,9 +25,9 @@ function ItemList({ items }){
                     </p>
 
                     <div className="card-actions justify-end">
-                        <a className="btn btn-sm btn-primary">
+                        <Link to={`/producto/${item.id}`} className="btn btn-sm btn-primary">
                             Ver más
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>

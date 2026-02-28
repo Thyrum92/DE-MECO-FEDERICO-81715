@@ -44,7 +44,7 @@ export default function Navbar( {categorias} ) {
         <ul className="menu menu-horizontal px-1">
             {categorias.map((categoria)=>(
               <li key={categoria.slug}>
-                <a>{categoria.name}</a>
+                <Link to={`/categoria/${categoria.slug}`}>{categoria.name}</Link>
               </li>
           ))}
         </ul>
