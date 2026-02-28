@@ -1,12 +1,12 @@
-import Navbar from './components/Navbar'
-import ItemListContainer from './components/ItemListContainer'
+import NavbarConainer from './components/NavbarContainer'
+import AppRouter from './router/AppRouter.jsx'
 
 function App() {
 
   return (
     <>
-      <Navbar />
-      <ItemListContainer text="Bienvenidos a TiendApp" />
+      <NavbarConainer />
+      <AppRouter />
     </>
   )
 }

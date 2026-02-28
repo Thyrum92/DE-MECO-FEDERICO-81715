@@ -1,10 +1,10 @@
 import CartWidget from "./CartWidget";
+import { Link } from "react-router";
 
-export default function Navbar() {
+export default function Navbar( {categorias} ) {
   return (
     <div className="navbar bg-base-100 shadow-sm">
       <div className="navbar-start">
-        {/* Mobile dropdown: oculto en desktop */}
         <div className="dropdown lg:hidden">
           <div tabIndex={0} role="button" className="btn btn-ghost">
             <svg
@@ -27,23 +27,26 @@ export default function Navbar() {
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow"
           >
-            <li><a>Monitores</a></li>
-            <li><a>Teclados</a></li>
-            <li><a>Mouse</a></li>
+            {categorias.map((categoria)=>(
+              <li key={categoria.slug}>
+                <a>{categoria.name}</a>
+              </li>
+          ))}
           </ul>
         </div>
 
-        <a className="btn btn-ghost text-xl" href="/">
+        <Link className="btn btn-ghost text-xl" to="/">
           TiendApp
-        </a>
+        </Link>
       </div>
 
-      {/* Desktop menu: oculto en mobile */}
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
-          <li><a>Monitores</a></li>
-          <li><a>Teclados</a></li>
-          <li><a>Mouse</a></li>
+            {categorias.map((categoria)=>(
+              <li key={categoria.slug}>
+                <a>{categoria.name}</a>
+              </li>
+          ))}
         </ul>
       </div>
 

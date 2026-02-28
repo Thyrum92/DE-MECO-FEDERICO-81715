@@ -1,9 +1,21 @@
-function ItemListContainer({ text }) {
+import { useState, useEffect } from "react";
+import ItemList from "./itemList";
+
+function ItemListContainer() {
+
+  const [items, setItems] = useState([])
+
+  useEffect(()=> {
+
+    fetch('https://dummyjson.com/products')
+    .then(res => res.json())
+    .then(data => setItems(data.products))
+
+  }, [])
+
   return (
-    <div className="flex items-center justify-center py-10">
-      <h2 className="text-center text-2xl font-semibold">
-        {text}
-      </h2>
+    <div>
+      <ItemList items={items} />
     </div>
   );
 }
