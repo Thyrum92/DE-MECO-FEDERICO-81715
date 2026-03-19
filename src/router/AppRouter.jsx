@@ -8,7 +8,7 @@ function AppRouter() {
       <Routes>
         <Route path="/" element={<ItemListContainer />} />
         <Route path="/cart" element={<CartContainer />} />
-        <Route path="/categoria/:nombreCategoria" element={<ItemListContainer />} />
+        <Route path="/categoria/:id_categoria" element={<ItemListContainer />} />
         <Route path="/producto/:id" element={<ItemDetailContainer />} />
       </Routes>
   );

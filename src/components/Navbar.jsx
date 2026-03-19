@@ -28,7 +28,7 @@ export default function Navbar( {categorias} ) {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow"
           >
             {categorias.map((categoria)=>(
-              <li key={categoria.slug}>
+              <li key={categoria.id}>
                 <a>{categoria.name}</a>
               </li>
           ))}
@@ -43,8 +43,8 @@ export default function Navbar( {categorias} ) {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
             {categorias.map((categoria)=>(
-              <li key={categoria.slug}>
-                <Link to={`/categoria/${categoria.slug}`}>{categoria.name}</Link>
+              <li key={categoria.id}>
+                <Link to={`/categoria/${categoria.id}`}>{categoria.name}</Link>
               </li>
           ))}
         </ul>

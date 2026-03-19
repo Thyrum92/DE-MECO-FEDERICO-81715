@@ -3,13 +3,14 @@ import { Link } from "react-router"
 function ItemList({ items }){
 
     return (
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
         {items.map((item) => (
             <div key={item.id} className="card bg-base-100 shadow hover:shadow-lg transition">
                 <figure>
                     <img
                         src={item.thumbnail}
                         alt={item.title}
+                        className="w-full max-h-60 object-contain"
                     />
                 </figure>
                 <div className="card-body">

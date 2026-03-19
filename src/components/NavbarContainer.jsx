@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { getCategories } from "../firebase/db"
 import Navbar from "./Navbar"
 
 function NavbarConainer( ){
@@ -6,13 +7,10 @@ function NavbarConainer( ){
     const [categorias, setCategorias] = useState([])
 
     useEffect(()=>{
-        fetch('https://dummyjson.com/products/categories')
-        .then(res => res.json())
-        .then(data =>{
-            const primeras = data.slice(0,5)
-            setCategorias(primeras)
-        }
-        )
+
+        getCategories()
+        .then(categorias => setCategorias(categorias))
+
     }, [])
 
     return(
