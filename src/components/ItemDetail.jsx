@@ -12,28 +12,54 @@ function ItemDetail({ producto }) {
 
   if (!producto) {
     return (
-      <div className="flex justify-center items-center min-h-[70vh]">
+      <div className="flex justify-center items-center min-h-[70vh] px-4">
         <div className="card w-full max-w-4xl bg-base-100 shadow-md">
-          
+
           <div className="grid md:grid-cols-2 gap-6 p-6">
-            
-            <div className="skeleton h-80 w-full rounded-xl"></div>
 
-            <div className="space-y-4">
-              <div className="skeleton h-6 w-2/3"></div>
-              <div className="skeleton h-4 w-full"></div>
-              <div className="skeleton h-4 w-5/6"></div>
+            <div className="flex items-center justify-center bg-base-200 rounded-xl">
+              <div className="skeleton h-80 w-full rounded-xl"></div>
+            </div>
 
-              <div className="flex gap-3">
-                <div className="skeleton h-6 w-24"></div>
-                <div className="skeleton h-6 w-20"></div>
+            <div className="flex flex-col justify-between">
+
+              <div className="space-y-4">
+
+                <div className="skeleton h-6 w-3/4"></div>
+
+                <div className="skeleton h-4 w-1/2"></div>
+                <div className="skeleton h-4 w-1/3"></div>
+
+                <div className="space-y-2">
+                  <div className="skeleton h-4 w-full"></div>
+                  <div className="skeleton h-4 w-5/6"></div>
+                  <div className="skeleton h-4 w-4/6"></div>
+                </div>
+
+                <div className="flex gap-3">
+                  <div className="skeleton h-6 w-24"></div>
+                  <div className="skeleton h-6 w-20"></div>
+                </div>
+
               </div>
 
-              <div className="skeleton h-10 w-40"></div>
-              <div className="skeleton h-10 w-32"></div>
+              <div className="space-y-4 mt-6">
+
+                <div className="flex items-center gap-2">
+                  <div className="skeleton h-10 w-10"></div>
+                  <div className="skeleton h-6 w-8"></div>
+                  <div className="skeleton h-10 w-10"></div>
+                  <div className="skeleton h-10 flex-1"></div>
+                </div>
+
+                <div className="skeleton h-6 w-32"></div>
+
+              </div>
+
             </div>
 
           </div>
+
         </div>
       </div>
     );
@@ -45,7 +71,6 @@ function ItemDetail({ producto }) {
         
         <div className="grid md:grid-cols-2 gap-6 p-6">
 
-          {/* Imagen */}
           <div className="flex items-center justify-center bg-base-200 rounded-xl">
             <img
               src={producto.thumbnail}
@@ -54,7 +79,6 @@ function ItemDetail({ producto }) {
             />
           </div>
 
-          {/* Info */}
           <div className="flex flex-col justify-between">
 
             <div className="space-y-3">
@@ -82,7 +106,6 @@ function ItemDetail({ producto }) {
               </div>
             </div>
 
-            {/* Acciones */}
             <div className="space-y-4 mt-6">
 
               <ItemCount

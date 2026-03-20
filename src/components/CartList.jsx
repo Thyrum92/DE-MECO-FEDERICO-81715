@@ -1,19 +1,20 @@
 import { CartItem } from "./CartItem";
 import { formatPrice } from "../utils/fomats";
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { CartContext } from "../context/CartContext"
 import { ToastContext } from "../context/ToastContext";
-
+import { CartModalContainer } from "./CartModalContainer";
 
 export function CartList({ cart, total }) {
 
     const { vaciarCarrito } = useContext(CartContext);
-    const { showToast } = useContext(ToastContext);
+    const { mostrarToast } = useContext(ToastContext);
+    const [estadoModal, setEstadoModal] = useState(false);
 
     const handleVaciar = () => {
         if (confirm("¿Seguro que querés vaciar el carrito?")) {
             vaciarCarrito();
-            showToast(`Carrito vaciado`, "success");
+            mostrarToast(`Carrito vaciado`, "success");
         }
     };
 
@@ -25,7 +26,6 @@ export function CartList({ cart, total }) {
 
             <div className="grid lg:grid-cols-3 gap-6">
 
-                {/* Lista de productos */}
                 <div className="lg:col-span-2 space-y-4">
 
                 {cart.map((item) => (
@@ -34,7 +34,6 @@ export function CartList({ cart, total }) {
 
                 </div>
 
-                {/* Resumen */}
                 <div className="card bg-base-100 shadow-md p-6 h-fit">
 
                 <h2 className="text-xl font-bold mb-4">Resumen</h2>
@@ -51,7 +50,10 @@ export function CartList({ cart, total }) {
                     </span>
                 </div>
 
-                <button className="btn btn-primary w-full mb-2">
+                <button
+                    className="btn btn-primary w-full mb-2"
+                    onClick={() => setEstadoModal(true)}
+                >
                     Finalizar compra
                 </button>
 
@@ -65,6 +67,14 @@ export function CartList({ cart, total }) {
                 </div>
 
             </div>
+
+            {estadoModal && (
+                <CartModalContainer 
+                    onClose={() => setEstadoModal(false)} 
+                    cart={cart}
+                    total={total}
+                />
+            )}
 
         </div>
     )

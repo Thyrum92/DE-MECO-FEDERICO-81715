@@ -1,37 +1,11 @@
-import { Link } from "react-router"
+import { ItemCard } from "./ItemCard";
 
 function ItemList({ items }){
 
     return (
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
         {items.map((item) => (
-            <div key={item.id} className="card bg-base-100 shadow hover:shadow-lg transition">
-                <figure>
-                    <img
-                        src={item.thumbnail}
-                        alt={item.title}
-                        className="w-full max-h-60 object-contain"
-                    />
-                </figure>
-                <div className="card-body">
-                    <h2 className="card-title line-clamp-1">{item.title}</h2>
-
-                    <div className="flex flex-wrap gap-2">
-                        <span className="badge badge-primary">Precio: ${item.price}</span>
-                        <span className="badge badge-outline">Stock: {item.stock}</span>
-                    </div>
-
-                    <p className="text-sm text-base-content/80 line-clamp-3">
-                    {item.description}
-                    </p>
-
-                    <div className="card-actions justify-end">
-                        <Link to={`/producto/${item.id}`} className="btn btn-sm btn-primary">
-                            Ver más
-                        </Link>
-                    </div>
-                </div>
-            </div>
+            <ItemCard key={item.id} item={item} />
         ))}
         </div>
     )
