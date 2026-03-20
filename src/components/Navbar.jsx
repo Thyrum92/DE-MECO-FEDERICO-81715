@@ -1,9 +1,9 @@
 import CartWidget from "./CartWidget";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 
 export default function Navbar( {categorias} ) {
   return (
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className="navbar sticky top-0 z-50 bg-base-100/80 backdrop-blur-md shadow-md border-b border-base-200">
       <div className="navbar-start">
         <div className="dropdown lg:hidden">
           <div tabIndex={0} role="button" className="btn btn-ghost">
@@ -29,13 +29,13 @@ export default function Navbar( {categorias} ) {
           >
             {categorias.map((categoria)=>(
               <li key={categoria.id}>
-                <a>{categoria.name}</a>
+                <NavLink className={({isActive}) => isActive ? 'btn btn-sm btn-primary' : 'rounded-lg px-3 py-2 hover:bg-base-200 transition-colors text-sm font-medium'} to={`/categoria/${categoria.id}`}>{categoria.name}</NavLink>
               </li>
           ))}
           </ul>
         </div>
 
-        <Link className="btn btn-ghost text-xl" to="/">
+        <Link className="btn btn-ghost text-xl font-extrabold tracking-tight" to="/">
           TiendApp
         </Link>
       </div>
@@ -44,7 +44,7 @@ export default function Navbar( {categorias} ) {
         <ul className="menu menu-horizontal px-1">
             {categorias.map((categoria)=>(
               <li key={categoria.id}>
-                <Link to={`/categoria/${categoria.id}`}>{categoria.name}</Link>
+                <NavLink className={({isActive}) => isActive ? 'btn btn-sm btn-primary' : 'rounded-lg px-3 py-2 hover:bg-base-200 transition-colors text-sm font-medium'} to={`/categoria/${categoria.id}`}>{categoria.name}</NavLink>
               </li>
           ))}
         </ul>

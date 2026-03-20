@@ -1,4 +1,5 @@
 import { Link } from "react-router"
+import { formatPrice } from "../utils/fomats"
 
 export function ItemCard({ item }) {
 
@@ -7,7 +8,7 @@ export function ItemCard({ item }) {
         return (
             <div className="card bg-base-100 shadow">
 
-            <figure>
+            <figure className="bg-base-200">
                 <div className="skeleton w-full h-60"></div>
             </figure>
 
@@ -37,19 +38,19 @@ export function ItemCard({ item }) {
     }
 
     return (
-        <div key={item.id} className="card bg-base-100 shadow hover:shadow-lg transition">
-            <figure>
+        <div key={item.id} className="card bg-base-100 shadow hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
+            <figure className="overflow-hidden bg-base-200">
                 <img
                     src={item.thumbnail}
                     alt={item.title}
-                    className="w-full max-h-60 object-contain"
+                    className="w-full max-h-60 object-contain transition-transform duration-300 group-hover:scale-105"
                 />
             </figure>
             <div className="card-body">
                 <h2 className="card-title line-clamp-1">{item.title}</h2>
 
                 <div className="flex flex-wrap gap-2">
-                    <span className="badge badge-primary">Precio: ${item.price}</span>
+                    <span className="badge badge-primary">{formatPrice(item.price)}</span>
                     <span className="badge badge-outline">Stock: {item.stock}</span>
                 </div>
 

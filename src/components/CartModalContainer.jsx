@@ -2,6 +2,7 @@ import { CartModalForm } from "./CartModalForm";
 import { validarFormulario } from "../utils/validaciones";
 import { createOrder } from "../firebase/db";
 import { useState, useContext } from "react";
+import { useNavigate } from "react-router";
 import { CartContext } from "../context/CartContext";
 import { serverTimestamp } from "@firebase/firestore";
 
@@ -19,6 +20,7 @@ export function CartModalContainer({ onClose, cart, total }) {
   });
 
   const { vaciarCarrito } = useContext(CartContext);
+  const navigate = useNavigate();
 
   const [errores, setErrores] = useState({});
   const [isLoading, setIsLoading] = useState(false);
@@ -61,7 +63,8 @@ export function CartModalContainer({ onClose, cart, total }) {
 
       setTimeout(() => {
         vaciarCarrito();
-      }, 3000);
+        navigate("/");
+      }, 1500);
 
     } catch (error) {
       console.error(error);

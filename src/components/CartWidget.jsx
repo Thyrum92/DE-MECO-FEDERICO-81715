@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { NavLink } from "react-router";
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 
@@ -7,7 +7,7 @@ function CartWidget() {
   const count = unidadesCarrito();
 
   return (
-    <Link to="/cart" className="btn btn-ghost btn-circle">
+    <NavLink to="/cart" className={({ isActive }) => isActive ? 'btn btn-primary btn-circle' : 'btn btn-ghost btn-circle'}>
       <div className="indicator">
 
         {/* Badge */}
@@ -32,7 +32,7 @@ function CartWidget() {
         </div>
 
       </div>
-    </Link>
+    </NavLink>
   );
 }
 export default CartWidget

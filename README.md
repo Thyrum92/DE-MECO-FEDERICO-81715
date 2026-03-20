@@ -1,16 +1,39 @@
-# React + Vite
+# TiendApp
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+SPA de e-commerce desarrollada como proyecto final para CoderHouse. Permite explorar un catálogo de productos, filtrarlos por categoría, ver el detalle de cada uno, armar un carrito de compras y generar una orden de compra que se guarda en Firebase Firestore.
 
-Currently, two official plugins are available:
+## Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Catálogo de productos con skeleton loading mientras se obtienen los datos
+- Filtro de productos por categoría desde la barra de navegación
+- Página de detalle de producto con selector de cantidad
+- Carrito de compras: agregar, eliminar y vaciar productos
+- Formulario de checkout con validaciones
+- Generación y persistencia de órdenes de compra en Firestore
+- Notificaciones toast para acciones del carrito
+- Navbar sticky con efecto frosted glass
 
-## React Compiler
+## Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| Tecnología | Uso |
+|---|---|
+| React 19 | UI |
+| React Router v7 | Ruteo cliente |
+| Firebase Firestore | Base de datos |
+| Tailwind CSS v4 + DaisyUI v5 | Estilos |
+| Vite | Bundler / dev server |
 
-## Expanding the ESLint configuration
+## Instalación
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm install
+npm run dev
+```
+
+## Scripts
+
+| Comando | Descripción |
+|---|---|
+| `npm run dev` | Servidor de desarrollo con HMR |
+| `npm run build` | Build de producción |
+|

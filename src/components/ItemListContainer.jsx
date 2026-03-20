@@ -6,19 +6,22 @@ import ItemList from "./ItemList";
 function ItemListContainer() {
 
   const [items, setItems] = useState([])
+  const [loading, setLoading] = useState(true)
   const { id_categoria } = useParams()
 
   useEffect(()=> {
 
+    setLoading(true)
+
     if(id_categoria) {
 
       getProductsByCategory(id_categoria)
-      .then(data => setItems(data))
+      .then(data => { setItems(data); setLoading(false) })
 
     }else{
 
       getProducts()
-      .then((data) => setItems(data))
+      .then((data) => { setItems(data); setLoading(false) })
 
     }
 
@@ -26,7 +29,7 @@ function ItemListContainer() {
 
   return (
     <div>
-      <ItemList items={items} />
+      <ItemList items={items} loading={loading} />
     </div>
   );
 }
